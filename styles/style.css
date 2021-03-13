@@ -1,0 +1,54 @@
+.header {
+	display: flex;
+	width: 100%;
+    height: 10%;
+    background-color: #ffecd7;
+    border-bottom: 1px solid;
+    min-height: 80px;
+}
+.container {
+	width: 100%;
+	height: 80%;
+	display: flex;
+}
+.footer {
+	display: flex;
+	height: 11%;
+	width: 100%;
+	background-color: #ffecd7;
+}
+body {
+	margin: 0;
+	background-color: #ffecd7;
+	height: 98vh;
+}
+#carousel-top {
+	font-family: 'Alfa Slab One', cursive;
+	font-size: 47px;
+	font-style: italic;
+	margin-left: 15%;
+	padding-top: 10px;
+	color: #ffc581;
+}
+#img-top {
+	width: 45px;
+}
+.left-block {
+	width: 61%;
+	height: 100%;
+	background-color: #ffc581;
+	border-right: 1px solid;
+	border-bottom: 1px solid;
+}
+.right-block {
+	background-color: #ffecd7;
+	width: 39%;
+	height: 100%;
+	border-bottom: 1px solid;
+}
+#info {
+	font-family: 'Alfa Slab One', cursive;
+	padding: 3em 0;
+	vertical-align: middle;
+	justify-content: center;
+}
