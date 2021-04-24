@@ -33,6 +33,7 @@ class Posts {
 				return i;
 			}
 		}
+		return -1;
 	}
 
 	sort_by_city() {
@@ -78,7 +79,7 @@ class Posts {
 				document.body.getElementsByClassName('center')[0].append(x)
 			}
 		} else {
-			for (let i = skip; i < skip + top; i++) {
+			for (let i = skip; i < top; i++) {
 				let x = document.createElement('div');
 				x.className = "post";
 				x.innerHTML = "<div class=\"post-left\"><div><div>Name: " + this.postArray[i].personName + 
@@ -149,13 +150,19 @@ function addPost(post) {
 }
 
 function removePost(id) {
+	let ind = data.getPostID(id);
+	if (ind == -1) {
+		return;
+	}
+	data.postArray[ind] = data.postArray[data.postArray.length - 1];
+	console.log(data.postArray.pop().city);
 	// -------------------------------- удаление!
-	let n = data.postArray.length;
 	data.sort_by_city();
-	for (let i = 0; i < n - 1; i++) {
+	for (let i = 0; i < data.postArray.length - 1; i++) {
 		(document.body.getElementsByClassName('post')[0]).parentNode.removeChild(document.body.getElementsByClassName('post')[0]);
 	}
-	data.showPosts(0, n - 2);
+	data.sort_by_city();
+	data.showPosts(0, data.postArray.length - 1);
 }
 
 function editPost(id, city, hotelName, phone, date, days, personName, nickname) {
@@ -176,4 +183,4 @@ function editPost(id, city, hotelName, phone, date, days, personName, nickname) 
 }
 
 data.sort_by_city();
-data.showPosts(0,data.postArray.length);
+data.showPosts(0,data.postArray.length - 1);
