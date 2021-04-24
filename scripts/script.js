@@ -158,11 +158,11 @@ function removePost(id) {
 	console.log(data.postArray.pop().city);
 	// -------------------------------- удаление!
 	data.sort_by_city();
-	for (let i = 0; i < data.postArray.length - 1; i++) {
+	for (let i = 0; i < data.postArray.length; i++) {
 		(document.body.getElementsByClassName('post')[0]).parentNode.removeChild(document.body.getElementsByClassName('post')[0]);
 	}
 	data.sort_by_city();
-	data.showPosts(0, data.postArray.length - 1);
+	data.showPosts(0, data.postArray.length);
 }
 
 function editPost(id, city, hotelName, phone, date, days, personName, nickname) {
@@ -183,4 +183,4 @@ function editPost(id, city, hotelName, phone, date, days, personName, nickname) 
 }
 
 data.sort_by_city();
-data.showPosts(0,data.postArray.length - 1);
+data.showPosts(0,data.postArray.length);
