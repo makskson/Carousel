@@ -60,6 +60,18 @@ class Posts {
 		}
 	}
 
+	sort_by_date() {
+		for (let i = 0; i < this.postArray.length - 1; i++) {
+			for (let j = i + 1; j < this.postArray.length; j++) {
+				if (this.postArray[i].date > this.postArray[j].date) {
+					let tmp = this.postArray[i];
+					this.postArray[i] = this.postArray[j];
+					this.postArray[j] = tmp;
+				}
+			}
+		}
+	}
+
 	showPosts(skip, top) {
 		if (skip > this.postArray.length) {
 			return false;
@@ -94,6 +106,31 @@ class Posts {
 			}
 		}
 	}
+
+	sort_by_city_and_show() {
+		this.sort_by_city();
+		let n = data.postArray.length;
+		for (let i = 0; i < document.body.getElementsByClassName('post').length; i++) {
+			(document.body.getElementsByClassName('post')[0]).parentNode.removeChild(document.body.getElementsByClassName('post')[0]);
+		}
+		this.showPosts(0,10);
+	}
+
+	sort_by_nickname_and_show() {
+		this.sort_by_nickname();
+		for (let i = 0; i < document.body.getElementsByClassName('post').length; i++) {
+			(document.body.getElementsByClassName('post')[0]).parentNode.removeChild(document.body.getElementsByClassName('post')[0]);
+		}
+		this.showPosts(0, 10);
+	}
+
+	sort_by_date_and_show() {
+		this.sort_by_date();
+		for (let i = 0; i < document.body.getElementsByClassName('post').length; i++) {
+			(document.body.getElementsByClassName('post')[0]).parentNode.removeChild(document.body.getElementsByClassName('post')[0]);
+		}
+		this.showPosts(0, 10);
+	}
 }
 
 
@@ -127,7 +164,7 @@ data.addPost(new Post('13', new Date("December 14, 1975 12:15:00"), "m", "Menesk
 data.addPost(new Post('14', new Date("December 14, 1975 12:15:00"), "n", "Menesk",
 	"375297770064", new Date("December 25, 2002"), 5, "Random Guy", "nickname7"));
 data.addPost(new Post('15', new Date("December 14, 1975 12:15:00"), "o", "Menesk",
-	"375297770064", new Date("December 25, 2002"), 5, "Random Guy", "nickname6"));
+	"375297770064", new Date("December 22, 2002"), 5, "Random Guy", "nickname6"));
 data.addPost(new Post('16', new Date("December 14, 1975 12:15:00"), "p", "Menesk",
 	"375297770064", new Date("December 25, 2002"), 5, "Random Guy", "nickname5"));
 data.addPost(new Post('17', new Date("December 14, 1975 12:15:00"), "q", "Menesk",
@@ -158,7 +195,7 @@ function removePost(id) {
 	console.log(data.postArray.pop().city);
 	// -------------------------------- удаление!
 	data.sort_by_city();
-	for (let i = 0; i < data.postArray.length; i++) {
+	for (let i = 0; i < data.postArray.length + 1; i++) {
 		(document.body.getElementsByClassName('post')[0]).parentNode.removeChild(document.body.getElementsByClassName('post')[0]);
 	}
 	data.sort_by_city();
@@ -184,3 +221,5 @@ function editPost(id, city, hotelName, phone, date, days, personName, nickname) 
 
 data.sort_by_city();
 data.showPosts(0,data.postArray.length);
+
+let elem = document.getElementsByClassName("select-window");

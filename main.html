@@ -19,13 +19,12 @@
 
     <div class="container">
     	<div class="left">
-            <form>
-                <p class="sort"><select class="select-window" name="select" size="2" multiple>
-                    <option selected value="s1">Date</option>
-                    <option value="s2">Name</option>
-                    <option value="s3">Hashtags</option>
-                </select>
-                <input type="submit" value="Sort" onclick=""></p> 
+            <form name="filter">
+                <p class="sort">
+                    <input type="button" value="Date" onclick="data.sort_by_date_and_show()">
+                    <input type="button" value="Name" onclick="data.sort_by_nickname_and_show()">
+                    <input type="button" value="City" onclick="data.sort_by_city_and_show()">
+                </p>
             </form>
         </div>
 
